@@ -1,0 +1,7 @@
+.chessboard > div:nth-child(even){
+    background-color: black;
+}
+
+.chessboard > div:nth-child(odd){
+    background-color: white;
+}
