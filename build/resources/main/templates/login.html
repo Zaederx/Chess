@@ -12,15 +12,15 @@
     <div th:if="${param.error}" class="alert alert-info show text-sm-center">Login unsuccessful.</div>
     <div th:if="${param.logout}" class="alert alert-primary show text-sm-center">You have successfully logged out.</div>
 
-    <div class="container">
-        <form  class="form-group w-25" th:action="@{/authenticate}" method="post">
-            <label class="form-control" for="username">Username</label>:
+    <div class="container d-flex justify-content-center">
+        <form  class="form-group w-50" th:action="@{/authenticate}" method="post">
+            <label for="username">Username</label>:
             <input class="form-control" type="text" id="username" name="username" autofocus="autofocus" /> <br />
-            <label class="form-control" for="password">Password</label>:
+            <label for="password">Password</label>:
             <input class="form-control" type="password" id="password" name="password" /> <br />
     
             <label for="remember">Remember Login</label>
-            <input class="form-control" type="checkbox" name="remember" id="remember">
+            <input type="checkbox" name="remember" id="remember">
     
             <input class="form-control" type="submit" value="Login" />
         </form>

@@ -1,6 +1,14 @@
 class Knight extends Piece {
     constructor(side:'black'|'white') {
         super('knight','./img/knight.svg',side)
-        this.constraints = {x:1,y:2,xy:0}//TODO exception - move both x and y thought not diagonally
+    }
+    movesNet(x:number,y:number):Array<any> {
+        return [
+            //knight's movement net
+            [x+1,y+2],[x-1,y+2],
+            [x+2,y+1],[x-2,y+1],
+            [x+2,y-1],[x-2,y-1],
+            [x+1,y-2],[x-1,y-2]
+        ]
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
@@ -21,7 +21,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	UserDetailsService service;
+	UserDetailsServiceImpl service;
 	@Override
 	protected void configure(HttpSecurity https) throws Exception {
 		https
@@ -30,19 +30,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.requiresSecure()
 			
 		.and().authorizeRequests()
-		.antMatchers("/","/login","/register","/home","/register/**","/h2-console/**").permitAll()
+		.antMatchers("/","/login","/register","/home","/register/**","/h2-console/**","/authenticate").permitAll()
 		
 		.and().authorizeRequests()
-			.antMatchers("/game/**").hasRole("user").anyRequest().authenticated()//note: because hasRole appends "ROLE_" to what ever string provided
+			.antMatchers("/game/**").hasRole("USER").anyRequest().authenticated()//note: because hasRole appends "ROLE_" to what ever string provided
 			//requires authenticated access 
 		
 		.and().formLogin() 
 				.loginPage("/login").permitAll()
-				.defaultSuccessUrl("/logged-user",true)
+				.defaultSuccessUrl("/game",true)
 				.failureUrl("/login?error")
 				.passwordParameter("password")
 				.usernameParameter("username")
-				.loginProcessingUrl("/authenticate").failureForwardUrl("/login-error")
+				.loginProcessingUrl("/authenticate")
+				// .failureForwardUrl("/login-error")
 				.failureHandler(new SimpleUrlAuthenticationFailureHandler("/login?error"))//calls this url authentication fails
 		
 		.and().rememberMe()
