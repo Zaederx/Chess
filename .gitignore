@@ -1,3 +1,12 @@
+#duplicates - js and css from ts and scss files
+js
+css
+
+#Gradle Generated Files
+bin
+.gradle
+build
+
 # Compiled class file
 *.class
 
