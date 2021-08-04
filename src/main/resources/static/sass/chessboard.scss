@@ -1,7 +1,22 @@
+.plane {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+.foreground {
+    z-index: 1;
+}
+.hidden {
+    display: none!important;
+}
+
 .chessboard {
+    grid-column: 1;
+    grid-row: 1;
     display: grid;
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px;//8 + 1 rows
 }
+
 
 .chessboard > div {
     width: 50px;

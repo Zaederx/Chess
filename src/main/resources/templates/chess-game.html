@@ -12,96 +12,189 @@
 </head>
 <body>
     <div th:replace="fragment/banner.html"></div>
-    <div class="chessboard container justify-content-center">
-        <!-- row 1 -->
-        <div id="s0-0"></div>
-        <div id="s0-1"></div>
-        <div id="s0-2"></div>
-        <div id="s0-3"></div>
-        <div id="s0-4"></div>
-        <div id="s0-5"></div>
-        <div id="s0-6"></div>
-        <div id="s0-7"></div>
-        <div class="hide"></div>
-
-        <!-- row 2 -->
-        <div id="s1-0"></div>
-        <div id="s1-1"></div>
-        <div id="s1-2"></div>
-        <div id="s1-3"></div>
-        <div id="s1-4"></div>
-        <div id="s1-5"></div>
-        <div id="s1-6"></div>
-        <div id="s1-7"></div>
-        <div class="hide"></div>
-
-        <!-- row 3 -->
-        <div id="s2-0"></div>
-        <div id="s2-1"></div>
-        <div id="s2-2"></div>
-        <div id="s2-3"></div>
-        <div id="s2-4"></div>
-        <div id="s2-5"></div>
-        <div id="s2-6"></div>
-        <div id="s2-7"></div>
-        <div class="hide"></div>
-
-        <!-- row 4 -->
-        <div id="s3-0"></div>
-        <div id="s3-1"></div>
-        <div id="s3-2"></div>
-        <div id="s3-3"></div>
-        <div id="s3-4"></div>
-        <div id="s3-5"></div>
-        <div id="s3-6"></div>
-        <div id="s3-7"></div>
-        <div class="hide"></div>
-
-        <!-- row 7 -->
-        <div id="s4-0"></div>
-        <div id="s4-1"></div>
-        <div id="s4-2"></div>
-        <div id="s4-3"></div>
-        <div id="s4-4"></div>
-        <div id="s4-5"></div>
-        <div id="s4-6"></div>
-        <div id="s4-7"></div>
-        <div class="hide"></div>
-
-        <!-- row 6 -->
-        <div id="s5-0"></div>
-        <div id="s5-1"></div>
-        <div id="s5-2"></div>
-        <div id="s5-3"></div>
-        <div id="s5-4"></div>
-        <div id="s5-5"></div>
-        <div id="s5-6"></div>
-        <div id="s5-7"></div>
-        <div class="hide"></div>
-
-        <!-- row 7 -->
-        <div id="s6-0"></div>
-        <div id="s6-1"></div>
-        <div id="s6-2"></div>
-        <div id="s6-3"></div>
-        <div id="s6-4"></div>
-        <div id="s6-5"></div>
-        <div id="s6-6"></div>
-        <div id="s6-7"></div>
-        <div class="hide"></div>
-
-        <!-- row 8 -->
-        <div id="s7-0"></div>
-        <div id="s7-1"></div>
-        <div id="s7-2"></div>
-        <div id="s7-3"></div>
-        <div id="s7-4"></div>
-        <div id="s7-5"></div>
-        <div id="s7-6"></div>
-        <div id="s7-7"></div>
-        <div class="hide"></div>
-
+    <div class="plane">
+        <div id="chessboard" class="chessboard container justify-content-center">
+            <!-- row 1 -->
+            <div id="s0-0"></div>
+            <div id="s0-1"></div>
+            <div id="s0-2"></div>
+            <div id="s0-3"></div>
+            <div id="s0-4"></div>
+            <div id="s0-5"></div>
+            <div id="s0-6"></div>
+            <div id="s0-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 2 -->
+            <div id="s1-0"></div>
+            <div id="s1-1"></div>
+            <div id="s1-2"></div>
+            <div id="s1-3"></div>
+            <div id="s1-4"></div>
+            <div id="s1-5"></div>
+            <div id="s1-6"></div>
+            <div id="s1-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 3 -->
+            <div id="s2-0"></div>
+            <div id="s2-1"></div>
+            <div id="s2-2"></div>
+            <div id="s2-3"></div>
+            <div id="s2-4"></div>
+            <div id="s2-5"></div>
+            <div id="s2-6"></div>
+            <div id="s2-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 4 -->
+            <div id="s3-0"></div>
+            <div id="s3-1"></div>
+            <div id="s3-2"></div>
+            <div id="s3-3"></div>
+            <div id="s3-4"></div>
+            <div id="s3-5"></div>
+            <div id="s3-6"></div>
+            <div id="s3-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 7 -->
+            <div id="s4-0"></div>
+            <div id="s4-1"></div>
+            <div id="s4-2"></div>
+            <div id="s4-3"></div>
+            <div id="s4-4"></div>
+            <div id="s4-5"></div>
+            <div id="s4-6"></div>
+            <div id="s4-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 6 -->
+            <div id="s5-0"></div>
+            <div id="s5-1"></div>
+            <div id="s5-2"></div>
+            <div id="s5-3"></div>
+            <div id="s5-4"></div>
+            <div id="s5-5"></div>
+            <div id="s5-6"></div>
+            <div id="s5-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 7 -->
+            <div id="s6-0"></div>
+            <div id="s6-1"></div>
+            <div id="s6-2"></div>
+            <div id="s6-3"></div>
+            <div id="s6-4"></div>
+            <div id="s6-5"></div>
+            <div id="s6-6"></div>
+            <div id="s6-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 8 -->
+            <div id="s7-0"></div>
+            <div id="s7-1"></div>
+            <div id="s7-2"></div>
+            <div id="s7-3"></div>
+            <div id="s7-4"></div>
+            <div id="s7-5"></div>
+            <div id="s7-6"></div>
+            <div id="s7-7"></div>
+            <div class="hide"></div>
+    
+        </div>
+        <div id="chessboard2" class="chessboard foreground container justify-content-center">
+            <!-- row 1 -->
+            <div id="n0-0"></div>
+            <div id="n0-1"></div>
+            <div id="n0-2"></div>
+            <div id="n0-3"></div>
+            <div id="n0-4"></div>
+            <div id="n0-5"></div>
+            <div id="n0-6"></div>
+            <div id="n0-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 2 -->
+            <div id="n1-0"></div>
+            <div id="n1-1"></div>
+            <div id="n1-2"></div>
+            <div id="n1-3"></div>
+            <div id="n1-4"></div>
+            <div id="n1-5"></div>
+            <div id="n1-6"></div>
+            <div id="n1-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 3 -->
+            <div id="n2-0"></div>
+            <div id="n2-1"></div>
+            <div id="n2-2"></div>
+            <div id="n2-3"></div>
+            <div id="n2-4"></div>
+            <div id="n2-5"></div>
+            <div id="n2-6"></div>
+            <div id="n2-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 4 -->
+            <div id="n3-0"></div>
+            <div id="n3-1"></div>
+            <div id="n3-2"></div>
+            <div id="n3-3"></div>
+            <div id="n3-4"></div>
+            <div id="n3-5"></div>
+            <div id="n3-6"></div>
+            <div id="n3-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 7 -->
+            <div id="n4-0"></div>
+            <div id="n4-1"></div>
+            <div id="n4-2"></div>
+            <div id="n4-3"></div>
+            <div id="n4-4"></div>
+            <div id="n4-5"></div>
+            <div id="n4-6"></div>
+            <div id="n4-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 6 -->
+            <div id="n5-0"></div>
+            <div id="n5-1"></div>
+            <div id="n5-2"></div>
+            <div id="n5-3"></div>
+            <div id="n5-4"></div>
+            <div id="n5-5"></div>
+            <div id="n5-6"></div>
+            <div id="n5-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 7 -->
+            <div id="n6-0"></div>
+            <div id="n6-1"></div>
+            <div id="n6-2"></div>
+            <div id="n6-3"></div>
+            <div id="n6-4"></div>
+            <div id="n6-5"></div>
+            <div id="n6-6"></div>
+            <div id="n6-7"></div>
+            <div class="hide"></div>
+    
+            <!-- row 8 -->
+            <div id="n7-0"></div>
+            <div id="n7-1"></div>
+            <div id="n7-2"></div>
+            <div id="n7-3"></div>
+            <div id="n7-4"></div>
+            <div id="n7-5"></div>
+            <div id="n7-6"></div>
+            <div id="n7-7"></div>
+            <div class="hide"></div>
+    
+        </div>
     </div>
+    
     <div th:replace="fragment/footer.html"></div>
 </body>
 </html>
