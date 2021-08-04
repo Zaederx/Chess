@@ -37,7 +37,7 @@ test {
 task compileSass() {
 	ext.process = new ProcessBuilder()
             .directory(projectDir)
-            .command("sass", "src/main/resources/static/sass:src/main/resources/static/css")
+            .command("npm", "run", "sass")
             .start();
 	ext.process.waitFor(5,TimeUnit.SECONDS);//wait for command to be executed
 	ext.process.destroy();
@@ -57,7 +57,7 @@ task compileSass() {
 task compileTS() {
 	ext.process = new ProcessBuilder()
             .directory(projectDir)
-            .command("tsc")
+            .command("npm", "run", "tsc")
             .start();
 
 	ext.process.waitFor(5,TimeUnit.SECONDS);

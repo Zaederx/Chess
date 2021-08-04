@@ -1,0 +1,27 @@
+{
+  "name": "chess",
+  "version": "1.0.0",
+  "description": "",
+  "main": " ",
+  "scripts": {
+    "sass": "sass src/main/resources/static/sass:src/main/resources/static/css",
+    "tsc": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zaederx/Chess.git"
+  },
+  "author": "Zachary Ishmael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zaederx/Chess/issues"
+  },
+  "homepage": "https://github.com/Zaederx/Chess#readme",
+  "dependencies": {
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "sass": "^1.37.5"
+  }
+}
