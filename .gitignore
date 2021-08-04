@@ -1,3 +1,6 @@
+#node_modules
+node_modules
+
 #duplicates - js and css from ts and scss files
 js
 css
