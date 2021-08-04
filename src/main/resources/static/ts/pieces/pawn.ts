@@ -1,4 +1,6 @@
-class Pawn extends Piece {
+import { Piece } from "../piece.js"
+
+export class Pawn extends Piece {
     constructor(side:'black'|'white') {
         super('Pawn', './img/pawn.svg', side)
     }

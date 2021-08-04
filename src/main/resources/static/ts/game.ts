@@ -1,7 +1,13 @@
+import {Board} from './board.js'
+import { Piece } from './piece';
 var board = new Board('black','white');
 
 var selectedX = 0
 var selectedY = 0
+
+window.onload = () => {
+    displayBoard()
+}
 //note y -> row, x -> col
 //display grid pieces
 function displayBoard() {
@@ -10,7 +16,7 @@ function displayBoard() {
     board.getGrid().forEach(row => {
         row.forEach( cell => {
             //get associated div id
-            var id = '#'+ rowNum + '-' + colNum
+            var id = '#s'+ rowNum + '-' + colNum
             console.log(id)
             //get associated div with that id
             var c = document.querySelector(id) as HTMLDivElement

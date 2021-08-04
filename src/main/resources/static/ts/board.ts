@@ -1,4 +1,12 @@
-class Board {
+import { Piece } from "./piece.js"
+import { Bishop } from "./pieces/bishop.js"
+import { King } from "./pieces/king.js"
+import { Knight } from "./pieces/knight.js"
+import { Pawn } from "./pieces/pawn.js"
+import { Queen } from "./pieces/queen.js"
+import { Rook } from "./pieces/rook.js"
+
+export class Board {
     side1:'black'|'white'
     side2:'black'|'white'
     grid:(Piece|null)[][]

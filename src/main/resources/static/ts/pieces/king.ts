@@ -1,4 +1,6 @@
-class King extends Piece {
+import { Piece } from "../piece.js"
+
+export class King extends Piece {
     constructor(side:'black'|'white') {
         super('king','./img/king.svg',side)
     }

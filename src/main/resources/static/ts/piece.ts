@@ -1,4 +1,4 @@
-class Piece {
+export class Piece {
     //TODO - make images for each in affinity
     name:string
     imgScr:string

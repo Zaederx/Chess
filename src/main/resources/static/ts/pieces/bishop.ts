@@ -1,4 +1,6 @@
-class Bishop extends Piece{
+import { Piece } from "../piece.js"
+
+export class Bishop extends Piece{
 
     constructor(side:'black'|'white') {
         super('bishop', './img/bishop.svg', side)
