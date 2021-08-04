@@ -2,7 +2,8 @@ import { Piece } from "../piece.js"
 
 export class King extends Piece {
     constructor(side:'black'|'white') {
-        super('king','./img/king.svg',side)
+        var svg = './img/king-'+side+'.svg'
+        super('king',svg,side)
     }
     movesNet(x:number, y:number) {
         return [

@@ -3,7 +3,8 @@ import { Piece } from "../piece.js"
 export class Bishop extends Piece{
 
     constructor(side:'black'|'white') {
-        super('bishop', './img/bishop.svg', side)
+        var svg = './img/bishop-'+side+'.svg'
+        super('bishop', svg, side)
     }
 
     movesNet(x:number, y:number) {
