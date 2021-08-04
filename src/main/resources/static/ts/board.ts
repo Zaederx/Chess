@@ -7,20 +7,22 @@ import { Queen } from "./pieces/queen.js"
 import { Rook } from "./pieces/rook.js"
 
 export class Board {
-    side1:'black'|'white'
-    side2:'black'|'white'
+    colour1:'black'|'white'
+    colour2:'black'|'white'
     grid:(Piece|null)[][]
-    constructor(side1:'black'|'white', side2:'black'|'white') {
-        this.side1 = side1
-        this.side2 = side2
+    turn:string
+    constructor(colour1:'black'|'white', colour2:'black'|'white') {
+        this.colour1 = colour1
+        this.colour2 = colour2
         this.grid = this.setBoard()
+        this.turn = this.colour1
     }
 
     setBoard() {
        this.grid = [
            //player1 side
-            [new Rook(this.side1), new Knight(this.side1), new Bishop(this.side1), new King(this.side1), new Queen(this.side1) ,new Bishop(this.side1),new Knight(this.side1),new Rook(this.side1)],
-            [new Pawn(this.side1,'top'), new Pawn(this.side1,'top'), new Pawn(this.side1,'top'), new Pawn(this.side1, 'top'), new Pawn(this.side1, 'top'), new Pawn(this.side1, 'top'), new Pawn(this.side1,'top'), new Pawn(this.side1,'top')],
+            [new Rook(this.colour1), new Knight(this.colour1), new Bishop(this.colour1), new King(this.colour1), new Queen(this.colour1) ,new Bishop(this.colour1),new Knight(this.colour1),new Rook(this.colour1)],
+            [new Pawn(this.colour1,'top'), new Pawn(this.colour1,'top'), new Pawn(this.colour1,'top'), new Pawn(this.colour1, 'top'), new Pawn(this.colour1, 'top'), new Pawn(this.colour1, 'top'), new Pawn(this.colour1,'top'), new Pawn(this.colour1,'top')],
 
             // middle
             [null,null,null,null,null,null,null,null],
@@ -29,8 +31,8 @@ export class Board {
             [null,null,null,null,null,null,null,null],
 
             //player2 side
-            [new Pawn(this.side2,'bottom'), new Pawn(this.side2,'bottom'), new Pawn(this.side2,'bottom'), new Pawn(this.side2, 'bottom'), new Pawn(this.side2,'bottom'), new Pawn(this.side2,'bottom'), new Pawn(this.side2,'bottom'), new Pawn(this.side2, 'bottom')],
-            [new Rook(this.side2), new Knight(this.side2),new Bishop(this.side2), new King(this.side2), new Queen(this.side2) ,new Bishop(this.side2),new Knight(this.side2),new Rook(this.side2)]
+            [new Pawn(this.colour2,'bottom'), new Pawn(this.colour2,'bottom'), new Pawn(this.colour2,'bottom'), new Pawn(this.colour2, 'bottom'), new Pawn(this.colour2,'bottom'), new Pawn(this.colour2,'bottom'), new Pawn(this.colour2,'bottom'), new Pawn(this.colour2, 'bottom')],
+            [new Rook(this.colour2), new Knight(this.colour2),new Bishop(this.colour2), new King(this.colour2), new Queen(this.colour2) ,new Bishop(this.colour2),new Knight(this.colour2),new Rook(this.colour2)]
         ]
         return this.grid
     }
@@ -56,13 +58,22 @@ export class Board {
         console.warn('movePiece - atCol:',atCol, 'atRow:', atRow, '** toCol:',toCol, 'toRow:',toRow)
         //get piece 
         var piece = this.grid[atRow][atCol]
-        //delete piece from previous spot
-        this.grid[atRow][atCol] = null
-        //move piece
-        this.grid[toRow][toCol] = piece
+        if (piece?.colour == this.turn) {
+            //delete piece from previous spot
+            this.grid[atRow][atCol] = null
+            //move piece
+            this.grid[toRow][toCol] = piece
 
-        /**
-         * Done this order in case  a piece is put 
+            if (this.turn == this.colour1) {
+                this.turn = this.colour2
+            }
+            else {
+                this.turn = this.colour1
+            }
+        }
+        
+        /*
+         * Done this order in case a piece is put 
          * back in the same spot. Need piece to be placed 
          * last after deletion of orginal spot
          */

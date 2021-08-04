@@ -42,10 +42,11 @@ function displayBoard() {
             //fill div with chess image for that square
             c.innerHTML = cellToIMG(cell)//return piece image
 
-            //reset board 2 colours
+            //reset board 2 colours and event listeners
             var netId = '#n'+ rowNum + '-' + colNum
             var c2 = document.querySelector(netId) as HTMLDivElement
             c2.style.backgroundColor = ''
+            c2.onclick = null
             colNum++
         })
         rowNum++
@@ -69,7 +70,9 @@ function makeAllCellsClickable() {
             //display board
             $('#chessboard2').removeClass('hidden')
             //display piece options
-            displayPieceOptions(atX,atY)
+            if (atX < 8 && atY < 8 && atX > -1 && atY > -1) {
+                displayPieceOptions(atX,atY)
+            }
         }
     })
 }
@@ -82,11 +85,25 @@ function displayPieceOptions(atX:number, atY:number) {
     // get piece move options
     var moves = board.getPieceMoves(atX,atY)
     // highlight these options & make them clickable
+    var i = 0
     moves?.forEach(move => {
         var x = move[0]
         var y = move[1]
-        highlightSquare(x,y)
         makeClickable(x,y)
+        var grid = board.getGrid()
+        if (x < 8 && y < 8 && x > -1 && y > -1) {
+            var piece = grid[y][x]
+            //don't highlight current position
+            if (i > 0) {
+                if (piece != null){
+                    highlightRed(x,y)
+                }
+                else {
+                    highlightSquare(x,y)
+                }
+            }
+        }
+        i++
     })
 }
 
@@ -98,7 +115,18 @@ function highlightSquare(col:number,row:number) {
         //get square
         var square = document.querySelector(id) as HTMLDivElement
         //change background colour to highlighted
-        square.style.backgroundColor = 'rgb(100,200,100)'
+        square.style.backgroundColor = 'rgb(100,200,100)'//green
+    }
+}
+
+function highlightRed(col:number,row:number) {
+    if (col < 8 && row < 8 && col > -1 && row > -1) {
+        //get square id
+        var id = '#n'+ row + '-' + col
+        //get square
+        var square = document.querySelector(id) as HTMLDivElement
+        //change background colour to highlighted
+        square.style.backgroundColor = 'rgb(200,100,100)'
     }
 }
 

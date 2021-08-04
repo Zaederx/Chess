@@ -18,6 +18,7 @@ export class Pawn extends Piece {
         }
         else {
             net = [
+                [x,y],
                 [x,y-1]
             ]
         }

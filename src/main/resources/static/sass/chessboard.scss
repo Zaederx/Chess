@@ -40,7 +40,11 @@
 }
 
 .chessboard2 > div:nth-child(even){
-    background-color: rgba(0,200,200,0.2);
+    background-color: none;//rgba(0,200,200,0.2);
+}
+
+.chessboard2 > div:nth-child(odd){
+    background-color: none;
 }
 
 .chessboard2 > div.hide {
@@ -48,6 +52,3 @@
     border: solid 1px white;
 }
 
-.chessboard2 > div:nth-child(odd){
-    background-color: rgba(255,255,255,0.8);
-}
