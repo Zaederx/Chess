@@ -53,9 +53,19 @@ export class Board {
     }
 
     movePiece(atRow:number,atCol:number,toRow:number,toCol:number) {
+        console.warn('movePiece - atCol:',atCol, 'atRow:', atRow, '** toCol:',toCol, 'toRow:',toRow)
         //get piece 
         var piece = this.grid[atRow][atCol]
+        //delete piece from previous spot
+        this.grid[atRow][atCol] = null
         //move piece
         this.grid[toRow][toCol] = piece
+
+        /**
+         * Done this order in case  a piece is put 
+         * back in the same spot. Need piece to be placed 
+         * last after deletion of orginal spot
+         */
+        
     }
 }
