@@ -1,12 +1,14 @@
 import { Piece } from "../piece.js"
 
 export class King extends Piece {
-    constructor(side:'black'|'white') {
-        var svg = './img/king-'+side+'.svg'
-        super('king',svg,side)
+    constructor(colour:'black'|'white') {
+        var svg = './img/king-'+colour+'.svg'
+        super('king',svg,colour)
     }
     movesNet(x:number, y:number) {
         return [
+            //put piece back
+            [x,y],
             //forward and backward
             [x+1,y], [x-1,y],
             //right and left

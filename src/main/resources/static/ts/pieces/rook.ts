@@ -1,14 +1,16 @@
 import { Piece } from "../piece.js"
 
 export class Rook extends Piece {
-    constructor(side:'black'|'white') {
-        var svg = './img/rook-'+side+'.svg'
-        super('rook', svg, side)
+    constructor(colour:'black'|'white') {
+        var svg = './img/rook-'+colour+'.svg'
+        super('rook', svg, colour)
         //can move x whole length or y whole length, but not diagonally
     }
 
     movesNet(x:number, y:number) {
         return [
+            //put piece back
+            [x,y],
             //forward and back
             [x,y+7],[x,y-7],
             [x,y+6],[x,y-6],

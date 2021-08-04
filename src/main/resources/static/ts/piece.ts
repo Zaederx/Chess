@@ -1,13 +1,14 @@
 export class Piece {
-    //TODO - make images for each in affinity
     name:string
     imgScr:string
-    side:'black'|'white'
+    colour:'black'|'white'
+    side:'top'|'bottom'| null
     //can move x or y or xy -> diagonally x&y increasing by the same value
-    constructor(name:string, imgScr:string, side:'black'|'white' ) {
+    constructor(name:string, imgScr:string, colour:'black'|'white', side?:'top'|'bottom' ) {
         this.name = name
         this.imgScr = imgScr
-        this.side = side
+        this.colour = colour
+        this.side = side ? side : null
     }
 
     //each piece will have a net of moves that it can complete

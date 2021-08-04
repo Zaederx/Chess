@@ -2,13 +2,15 @@ import { Piece } from "../piece.js"
 
 export class Bishop extends Piece{
 
-    constructor(side:'black'|'white') {
-        var svg = './img/bishop-'+side+'.svg'
-        super('bishop', svg, side)
+    constructor(colour:'black'|'white') {
+        var svg = './img/bishop-'+colour+'.svg'
+        super('bishop', svg, colour)
     }
 
     movesNet(x:number, y:number) {
         return [
+            //put piece back
+            [x,y],
             //diagonal movements
             [x+8,y+8],
             [x+7,y+7],

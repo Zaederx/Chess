@@ -92,12 +92,14 @@ function displayPieceOptions(atX:number, atY:number) {
 
 //for highlighting square that is valid move
 function highlightSquare(col:number,row:number) {
-    //get square id
-    var id = '#n'+ row + '-' + col
-    //get square
-    var square = document.querySelector(id) as HTMLDivElement
-    //change background colour to highlighted
-    square.style.backgroundColor = 'rgb(100,200,100)'
+    if (col < 8 && row < 8 && col > -1 && row > -1) {
+        //get square id
+        var id = '#n'+ row + '-' + col
+        //get square
+        var square = document.querySelector(id) as HTMLDivElement
+        //change background colour to highlighted
+        square.style.backgroundColor = 'rgb(100,200,100)'
+    }
 }
 
 //to make a square that is a valid move selectable
@@ -108,20 +110,21 @@ function highlightSquare(col:number,row:number) {
  * @param row - row of new avaliable move
  */
 function makeClickable(col:number,row:number) {
-    //get square id
-    var id = '#n'+ row + '-' + col
-    //get square
-    var square = document.querySelector(id) as HTMLDivElement
-    //add event listener for moving piece of click
-    square.onclick = () => {
-        //move selected piece to new clicked square
-        movePiece(selectedX,selectedY,col,row)
-        //hide board2
-        $('#chessboard2').addClass('hidden')
-        //refresh board
-        displayBoard()
+    if (col < 8 && row < 8 && col > -1 && row > -1) {
+        //get square id
+        var id = '#n'+ row + '-' + col
+        //get square
+        var square = document.querySelector(id) as HTMLDivElement
+        //add event listener for moving piece of click
+        square.onclick = () => {
+            //move selected piece to new clicked square
+            movePiece(selectedX,selectedY,col,row)
+            //hide board2
+            $('#chessboard2').addClass('hidden')
+            //refresh board
+            displayBoard()
+        }
     }
-
 }
 
 /**
