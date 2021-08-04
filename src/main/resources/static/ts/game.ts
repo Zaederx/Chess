@@ -15,6 +15,8 @@ function displayBoard() {
     var colNum = 0
     board.getGrid().forEach(row => {
         row.forEach( cell => {
+            //if add the end of col go back to first col
+            if (colNum == 8) {colNum = 0}
             //get associated div id
             var id = '#s'+ rowNum + '-' + colNum
             console.log(id)
@@ -70,7 +72,10 @@ function makeClickable(col:number,row:number) {
 }
 
 function cellToIMG(cell:Piece|null) {
-    var img = '<img src="'+cell?.imgScr+'"></img>'
+    var img = ''
+    if (cell?.imgScr) {
+        img = '<img src="'+cell?.imgScr+'"></img>'
+    }
     return img
 }
 

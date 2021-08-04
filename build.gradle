@@ -33,7 +33,9 @@ test {
 	useJUnitPlatform()
 }
 
-
+/**
+* Calls npm to compile scss file into css
+*/
 task compileSass() {
 	println "\u001B[32m"+"compiling sass"
 	ext.process = new ProcessBuilder()
@@ -55,7 +57,7 @@ task compileSass() {
 	// }
 	timeout = Duration.ofMinutes(1)
 }
-
+//Calls npm to compile ts files into js files
 task compileTS() {
 	println "\u001B[32m"+"compiling typescript"
 	ext.process = new ProcessBuilder()
