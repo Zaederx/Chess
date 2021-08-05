@@ -86,49 +86,77 @@ function displayPieceOptions(atX:number, atY:number) {
     var moves = board.getPieceMoves(atX,atY)
     // highlight these options & make them clickable
     var i = 0
+    //for each move in available moves
     moves?.forEach(move => {
         var x = move[0]
         var y = move[1]
-        makeClickable(x,y)
+        
         var grid = board.getGrid()
+
+        //make sure x and y are valid coordinates on the board
         if (x < 8 && y < 8 && x > -1 && y > -1) {
-            var piece = grid[y][x]
-            //don't highlight current position
-            if (i > 0) {
-                if (piece != null){
-                    highlightRed(x,y)
+            //make move a clickable option
+            makeClickable(x,y)
+            //check for a piece alreay in that position
+            var square = grid[y][x]//return a piece is not null
+            var selectedPiece = grid[atY][atX]
+            //is enemy piece?
+            if (square != null && square?.colour != selectedPiece?.colour) {
+                //don't highlight first available move (which is current position)
+                if (i > 0) {
+                    var red = 'rgb(200,100,100)'
+                    highlightSquare(x,y,red)
                 }
-                else {
-                    highlightSquare(x,y)
+            }
+            else if (square != null && square?.colour == selectedPiece?.colour) {
+                //don't highlight first available move (which is current position)
+                if (i > 0) {
+                    var blue = 'rgb(100,100,200)'
+                    highlightSquare(x,y,blue)
                 }
+            }
+            else if (i > 0) { //if no piece obstructing and not moves[0] ->(staying in position)
+                var green = 'rgb(100,200,100)'
+                highlightSquare(x,y,green)
             }
         }
         i++
     })
 }
 
-//for highlighting square that is valid move
-function highlightSquare(col:number,row:number) {
+/**
+ * For highlighting square that is valid move
+ * @param col column number - x value
+ * @param row row number - y value
+ * @param colour - rgb colour string
+ */
+function highlightSquare(col:number,row:number, colour:string) {
     if (col < 8 && row < 8 && col > -1 && row > -1) {
         //get square id
         var id = '#n'+ row + '-' + col
         //get square
         var square = document.querySelector(id) as HTMLDivElement
         //change background colour to highlighted
-        square.style.backgroundColor = 'rgb(100,200,100)'//green
+        square.style.backgroundColor = colour //'rgb(100,200,100)'//green
     }
 }
 
-function highlightRed(col:number,row:number) {
-    if (col < 8 && row < 8 && col > -1 && row > -1) {
-        //get square id
-        var id = '#n'+ row + '-' + col
-        //get square
-        var square = document.querySelector(id) as HTMLDivElement
-        //change background colour to highlighted
-        square.style.backgroundColor = 'rgb(200,100,100)'
-    }
-}
+// /**
+//  * For highlighting square that is valid move for 
+//  * capturing another piece.
+//  * @param col column number - x value
+//  * @param row row number - y value
+//  */
+// function highlightRed(col:number,row:number) {
+//     if (col < 8 && row < 8 && col > -1 && row > -1) {
+//         //get square id
+//         var id = '#n'+ row + '-' + col
+//         //get square
+//         var square = document.querySelector(id) as HTMLDivElement
+//         //change background colour to highlighted
+//         square.style.backgroundColor = 'rgb(200,100,100)'
+//     }
+// }
 
 //to make a square that is a valid move selectable
 /**
