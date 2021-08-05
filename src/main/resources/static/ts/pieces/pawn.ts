@@ -3,7 +3,7 @@ import { Piece } from "../piece.js"
 export class Pawn extends Piece {
     constructor(colour:'black'|'white', side:'top'|'bottom') {
         var svg = './img/pawn-'+colour+'.svg'
-        super('Pawn', svg, colour,side)
+        super('pawn', svg, colour,side)
     }
 
     movesNet(x:number,y:number) {

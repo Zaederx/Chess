@@ -82,6 +82,8 @@ function displayPieceOptions(atX:number, atY:number) {
     //set piece position as selected position
     selectedX = atX
     selectedY = atY
+    //make current piece square selectable - to put piece down
+    makeClickable(atX,atY)
     // get piece move options
     var moves = board.getPieceMoves(atX,atY)
     // highlight these options & make them clickable
@@ -95,29 +97,61 @@ function displayPieceOptions(atX:number, atY:number) {
 
         //make sure x and y are valid coordinates on the board
         if (x < 8 && y < 8 && x > -1 && y > -1) {
-            //make move a clickable option
-            makeClickable(x,y)
+            
             //check for a piece alreay in that position
             var square = grid[y][x]//return a piece is not null
             var selectedPiece = grid[atY][atX]
+
+            if (selectedPiece?.name == 'pawn') {
+                var addX = 0
+                var addY = 0
+                if (selectedPiece.side == 'top'){
+                    addY = +1
+                }   
+                else {
+                    addY = -1
+                }
+                //check diagonals for piece to capture
+                var d1 = grid[atY+addY][atX-1]
+                var d2 = grid[atY+addY][atX+1]
+                
+                //if diagonal has piece - highlight for pawn to capture
+                if (d1 != null && d1.colour != selectedPiece.colour) {
+                    var red = 'rgb(200,100,100)'
+                    highlightSquare(atX-1,atY+addY,red)
+                    makeClickable(atX-1,atY+addY)
+                }
+                if (d2 != null && d2.colour != selectedPiece.colour) {
+                    var red = 'rgb(200,100,100)'
+                    highlightSquare(atX+1,atY+addY,red)
+                    makeClickable(atX+1,atY+addY)
+                }
+            }
+
             //is enemy piece?
             if (square != null && square?.colour != selectedPiece?.colour) {
                 //don't highlight first available move (which is current position)
-                if (i > 0) {
+                if (i > 0 && selectedPiece?.name != 'pawn') {
                     var red = 'rgb(200,100,100)'
                     highlightSquare(x,y,red)
+                    //make move a clickable option
+                    makeClickable(x,y)
                 }
             }
             else if (square != null && square?.colour == selectedPiece?.colour) {
                 //don't highlight first available move (which is current position)
-                if (i > 0) {
+                if (i > 0 && selectedPiece?.name != 'pawn') {
                     var blue = 'rgb(100,100,200)'
                     highlightSquare(x,y,blue)
+                    //make move a clickable option
+                    makeClickable(x,y)
                 }
             }
-            else if (i > 0) { //if no piece obstructing and not moves[0] ->(staying in position)
+            else if (i > 0 && square == null ) { //if no piece obstructing and not moves[0] ->(staying in position)
                 var green = 'rgb(100,200,100)'
                 highlightSquare(x,y,green)
+                //make move a clickable option
+                makeClickable(x,y)
             }
         }
         i++
