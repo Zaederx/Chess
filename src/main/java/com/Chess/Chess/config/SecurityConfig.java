@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.requiresSecure()
 			
 		.and().authorizeRequests()
-		.antMatchers("/","/login","/register","/home","/register/**","/h2-console/**","/authenticate").permitAll()
+		.antMatchers("/","/login","/register","/home","/register/**","/h2-console/**","/authenticate","/img/**").permitAll()
 		
 		.and().authorizeRequests()
 			.antMatchers("/game/**").hasRole("USER").anyRequest().authenticated()//note: because hasRole appends "ROLE_" to what ever string provided
@@ -57,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.deleteCookies("JSESSIONID","Chess")//deletes cookies
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/login")
-			.logoutSuccessUrl("/logout-success")
+			.logoutSuccessUrl("/home")
 			.permitAll()
 		
 		
