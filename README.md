@@ -1,13 +1,6 @@
 # Chess
  [see Youtube walkthrough](https://youtu.be/gV249Z3BDkU)
 
-# Asteroid Field Game
- Asteriod Field Game
- 
- Instruction on how to run the game:
- - open up in the terminal and then type:
- `npm install` then
- `npm start`
  
  ## Tables of Contents
 
