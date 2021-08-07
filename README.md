@@ -14,8 +14,8 @@
 I set out to make a chess game in Spring, mainly to practice programming. It wasn't so much about making new app that does something different, as much as just having a practice project to add to my portfolio. 
 
 ## Images
-<img width="1440" alt="image" src="https://user-images.githubusercontent.com/38586415/128371776-d904cd75-ac2d-46dd-a803-00ece9a35043.png">
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/38586415/128371710-83db9548-f420-469a-b94b-47b54411cd98.png">
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/38586415/128371776-d904cd75-ac2d-46dd-a803-00ece9a35043.png">
 
 
 ## Technologies
