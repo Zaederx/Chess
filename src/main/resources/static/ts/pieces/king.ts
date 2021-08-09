@@ -1,3 +1,4 @@
+import { BoardNode } from "../board-node"
 import { Piece } from "../piece.js"
 
 export class King extends Piece {
@@ -5,17 +6,9 @@ export class King extends Piece {
         var svg = './img/king-'+colour+'.svg'
         super('king',svg,colour)
     }
-    movesNet(x:number, y:number) {
-        return [
-            //put piece back
-            [x,y],
-            //forward and backward
-            [x+1,y], [x-1,y],
-            //right and left
-            [x,y+1],[x,y-1],
-            //diagonals
-            [x+1,y+1], [x-1,y-1],
-            [x+1,y-1], [x-1,y+1]
-        ]
+    setNets(node:BoardNode) {
+        var nets = this.traverseAllPositions(1,node)
+        this.movesNet = nets[0]
+        this.captureNet = nets[1]
     }
 }

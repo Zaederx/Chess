@@ -1,8 +1,9 @@
+import { BoardGraph } from './board-graph.js';
 import { Board } from './board.js'
 import { Piece } from './piece.js';
 
 //contains grid 'memory'
-var board = new Board('black','white');
+var board = new BoardGraph('black','white');
 
 /**
  * position variables for currently 
@@ -40,7 +41,7 @@ function displayBoard() {
             //get associated div with that id
             var c = document.querySelector(id) as HTMLDivElement
             //fill div with chess image for that square
-            c.innerHTML = cellToIMG(cell)//return piece image
+            c.innerHTML = cellToIMG(cell.piece)//return piece image
 
             //reset board 2 colours and event listeners
             var netId = '#n'+ rowNum + '-' + colNum
@@ -85,22 +86,31 @@ function displayPieceOptions(atX:number, atY:number) {
     //make current piece square selectable - to put piece down
     makeClickable(atX,atY)
     // get piece move options
-    var moves = board.getPieceMoves(atX,atY)
+    var node = board.getGrid()[atY][atX]
+    node.piece?.setNets(node)
+    console.log('nodes:',node.nodes)
+    console.log('node to right:',node.nodes[4])
+    var moves = node.piece?.getMovesNet()
+    var captures = node.piece?.getCaptureNet()
     // highlight these options & make them clickable
     var i = 0
+
+    console.log('moves:',moves)
+    console.log('captures:', captures)
     //for each move in available moves
-    moves?.forEach(move => {
+    moves!.forEach(move => {
         var x = move[0]
         var y = move[1]
+        console.log('x:',x, 'y:',y)
         
         var grid = board.getGrid()
 
         //make sure x and y are valid coordinates on the board
         if (x < 8 && y < 8 && x > -1 && y > -1) {
             
-            //check for a piece alreay in that position
-            var square = grid[y][x]//return a piece is not null
-            var selectedPiece = grid[atY][atX]
+            //check for a piece already in that position
+            var square = grid[y][x].piece//return a piece is not null
+            var selectedPiece = grid[atY][atX].piece
 
             if (selectedPiece?.name == 'pawn') {
                 var addX = 0
@@ -112,8 +122,8 @@ function displayPieceOptions(atX:number, atY:number) {
                     addY = -1
                 }
                 //check diagonals for piece to capture
-                var d1 = grid[atY+addY][atX-1]
-                var d2 = grid[atY+addY][atX+1]
+                var d1 = grid[atY+addY][atX-1].piece
+                var d2 = grid[atY+addY][atX+1].piece
                 
                 //if diagonal has piece - highlight for pawn to capture
                 if (d1 != null && d1.colour != selectedPiece.colour) {
