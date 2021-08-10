@@ -99,20 +99,22 @@ function displayPieceOptions(atX:number, atY:number) {
     console.log('captures:', captures)
     //for each move in available moves
     moves!.forEach(move => {
-        something(move,atY,atX)
+        var green = 'rgb(100,200,100)'
+        something(move,atY,atX,green)
     })
     captures!.forEach(cap => {
-        something(cap,atY,atX)
+        var red = 'rgb(200,100,100)'
+        something(cap,atY,atX,red)
     })
 }
 
-function something(move:number[],atY:number,atX:number) {
+function something(move:number[],atY:number,atX:number, colour:string) {
 
     var x = move[0]
     var y = move[1]
 
-    var green = 'rgb(100,200,100)'
-    highlightSquare(x,y,green)
+    
+    highlightSquare(x,y,colour)
     makeClickable(x,y)
     // var i = 0
     // var x = move[0]
