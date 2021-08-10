@@ -127,28 +127,33 @@ export class BoardGraph {
                 if (x < 8) {
                     
                     var node = rows[y][x]
-                    console.log('node name:', rows[y][x].name)
+                    console.warn('node name:', rows[y][x].name)
                     
                     //add node to the right - position 4
                     if (x+1 < 8) {
                         node.nodes[4] = rows[y][x+1]
+                        console.log('add square:',rows[y][x+1].name)
                     }
                     //add node to the left - position 3
                     if (x-1 >= 0) {
                         node.nodes[3] = rows[y][x-1]
+                        console.log('add square:',rows[y][x-1].name)
                     }
                     
                     //add connected node from row below
                     if (y+1 < 8) {
                         //add node below - position 6
                         node.nodes[6] = rows[y+1][x]
+                        console.log('add square:',rows[y+1][x].name)
                         //add node position 7 - bottom right diagonal
                         if (x+1 < 8) {
                             node.nodes[7] = rows[y+1][x+1]
+                            console.log('add square:',rows[y+1][x+1].name)
                         }
                         //add node position 5 - bottom left diagonal
-                        if (x-1 > 0) {
+                        if (x-1 >= 0) {
                             node.nodes[5] = rows[y+1][x-1]
+                            console.log('add square:',rows[y+1][x-1].name)
                         }
                     }
 
@@ -156,19 +161,23 @@ export class BoardGraph {
                     if (y-1 >= 0) {
                         //add node top - position 1
                         node.nodes[1] = rows[y-1][x]
+                        console.log('add square:',rows[y-1][x].name)
                         //add node position 2 - top right diagonal
                         if (x+1 < 8) {
                             node.nodes[2] = rows[y-1][x+1]
+                            console.log('add square:',rows[y-1][x+1].name)
                         }
                         //add node position 0 - top left diagonal
-                        if (x-1 > 0) {
+                        if (x-1 >= 0) {
                             node.nodes[0] = rows[y-1][x-1]
+                            console.log('add square:',rows[y-1][x-1].name)
                         }
                     }
                     
                 } 
+
             }
-            
+
         }
 
         //set a1 as starting node
@@ -190,6 +199,13 @@ export class BoardGraph {
         return piece?.captureNet
     }
 
+    /**
+     * 
+     * @param atRow - atY
+     * @param atCol - atX
+     * @param toRow - toY
+     * @param toCol - toX
+     */
     movePiece(atRow:number,atCol:number,toRow:number,toCol:number) {
         console.warn('movePiece - atCol:',atCol, 'atRow:', atRow, '** toCol:',toCol, 'toRow:',toRow)
         //get piece 
@@ -207,6 +223,7 @@ export class BoardGraph {
             else {
                 this.turn = this.colour1
             }
+            console.log('turn is:',this.turn)
         }
     }
 

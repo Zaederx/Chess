@@ -2,6 +2,14 @@ import { Board } from "./board.js"
 import { BoardNode } from "./board-node.js"
 
 export class Piece {
+    /**
+     *  * ```
+     * Node positions
+     *  0 | 1 | 2
+     *  3 | N | 4
+     *  5 | 6 | 7
+     * ```
+     */
     static top:number = 1
     static bottom:number = 6
     static left:number = 3
@@ -9,7 +17,7 @@ export class Piece {
     static topLeft:number = 0
     static topRight:number = 2
     static bottomLeft:number = 5
-    static bottomRight:number = 6
+    static bottomRight:number = 7
 
     name:string
     imgScr:string
