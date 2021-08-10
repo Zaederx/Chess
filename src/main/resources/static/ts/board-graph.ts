@@ -12,7 +12,7 @@ export class BoardGraph {
     colour2:'black'|'white'
     startNode:BoardNode|null = null
     grid:BoardNode[][] = []
-    turn: any
+    turn:'black'|'white'
     constructor(colour1:'black'|'white', colour2:'black'|'white') {
         this.colour1 = colour1
         this.colour2 = colour2
@@ -207,23 +207,30 @@ export class BoardGraph {
      * @param toCol - toX
      */
     movePiece(atRow:number,atCol:number,toRow:number,toCol:number) {
-        console.warn('movePiece - atCol:',atCol, 'atRow:', atRow, '** toCol:',toCol, 'toRow:',toRow)
-        //get piece 
-        var node = this.grid[atRow][atCol]
-        var piece = node.piece
-        if (piece?.colour == this.turn) {
-            //delete piece from previous spot
-            this.grid[atRow][atCol].piece = null
-            //move piece
-            this.grid[toRow][toCol].piece = piece
+        
+        if (!(atRow == toRow && atCol == toCol)) {
+            console.warn('movePiece - atCol:',atCol, 'atRow:', atRow, '** toCol:',toCol, 'toRow:',toRow)
+            //get piece 
+            var node = this.grid[atRow][atCol]
+            var piece = node.piece
+            if (piece?.colour == this.turn) {
+                //delete piece from previous spot
+                this.grid[atRow][atCol].piece = null
+                //move piece
+                this.grid[toRow][toCol].piece = piece
 
-            if (this.turn == this.colour1) {
-                this.turn = this.colour2
+                if (piece.name == 'pawn') {
+                    (this.grid[toRow][toCol].piece as Pawn).isFirstMove = false
+                }
+                //if putting piece down and not moving - don't change turn
+                if (this.turn == this.colour1) {
+                    this.turn = this.colour2
+                }
+                else {
+                    this.turn = this.colour1
+                }
+                console.log('turn is:',this.turn)
             }
-            else {
-                this.turn = this.colour1
-            }
-            console.log('turn is:',this.turn)
         }
     }
 

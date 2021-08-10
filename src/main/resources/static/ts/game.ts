@@ -29,6 +29,8 @@ window.onload = () => {
  * innerHTML.
  */
 function displayBoard() {
+    var turnDiv = document.querySelector('#turn-div') as HTMLDivElement
+    turnDiv.innerHTML = board.turn
     var rowNum = 0
     var colNum = 0
     board.getGrid().forEach(row => {
@@ -84,7 +86,9 @@ function displayPieceOptions(atX:number, atY:number) {
     selectedX = atX
     selectedY = atY
     //make current piece square selectable - to put piece down
+    var blue = 'rgba(100,100,200,0.6)'
     makeClickable(atX,atY)
+    highlightSquare(atX,atY,blue)
     // get piece move options
     var node = board.getGrid()[atY][atX]
     node.piece?.setNets(node)
@@ -100,91 +104,22 @@ function displayPieceOptions(atX:number, atY:number) {
     //for each move in available moves
     moves!.forEach(move => {
         var green = 'rgb(100,200,100)'
-        something(move,atY,atX,green)
+        selectSquares(move,green)
     })
     captures!.forEach(cap => {
         var red = 'rgb(200,100,100)'
-        something(cap,atY,atX,red)
+        selectSquares(cap,red)
     })
 }
 
-function something(move:number[],atY:number,atX:number, colour:string) {
-
+function selectSquares(move:number[], colour:string) {
     var x = move[0]
     var y = move[1]
 
-    
     highlightSquare(x,y,colour)
     makeClickable(x,y)
-    // var i = 0
-    // var x = move[0]
-    // var y = move[1]
-    
-    // console.log('x:',x, 'y:',y)
-    
-    // var grid = board.getGrid()
-
-    // //make sure x and y are valid coordinates on the board
-    // if (x < 8 && y < 8 && x > -1 && y > -1) {
-        
-    //     //check for a piece already in that position
-    //     var square = grid[y][x].piece//return a piece is not null
-    //     var selectedPiece = grid[atY][atX].piece
-
-    //     if (selectedPiece?.name == 'pawn') {
-    //         var addX = 0
-    //         var addY = 0
-    //         if (selectedPiece.side == 'top'){
-    //             addY = +1
-    //         }   
-    //         else {
-    //             addY = -1
-    //         }
-    //         //check diagonals for piece to capture
-    //         var d1 = grid[atY+addY][atX-1].piece
-    //         var d2 = grid[atY+addY][atX+1].piece
-            
-    //         //if diagonal has piece - highlight for pawn to capture
-    //         if (d1 != null && d1.colour != selectedPiece.colour) {
-    //             var red = 'rgb(200,100,100)'
-    //             highlightSquare(atX-1,atY+addY,red)
-    //             makeClickable(atX-1,atY+addY)
-    //         }
-    //         if (d2 != null && d2.colour != selectedPiece.colour) {
-    //             var red = 'rgb(200,100,100)'
-    //             highlightSquare(atX+1,atY+addY,red)
-    //             makeClickable(atX+1,atY+addY)
-    //         }
-    //     }
-
-    //     //is enemy piece?
-    //     if (square != null && square?.colour != selectedPiece?.colour) {
-    //         //don't highlight first available move (which is current position)
-    //         if (i > 0 && selectedPiece?.name != 'pawn') {
-    //             var red = 'rgb(200,100,100)'
-    //             highlightSquare(x,y,red)
-    //             //make move a clickable option
-    //             makeClickable(x,y)
-    //         }
-    //     }
-    //     else if (square != null && square?.colour == selectedPiece?.colour) {
-    //         //don't highlight first available move (which is current position)
-    //         if (i > 0 && selectedPiece?.name != 'pawn') {
-    //             var blue = 'rgb(100,100,200)'
-    //             highlightSquare(x,y,blue)
-    //             //make move a clickable option
-    //             makeClickable(x,y)
-    //         }
-    //     }
-    //     else if (i > 0 && square == null ) { //if no piece obstructing and not moves[0] ->(staying in position)
-    //         var green = 'rgb(100,200,100)'
-    //         highlightSquare(x,y,green)
-    //         //make move a clickable option
-    //         makeClickable(x,y)
-    //     }
-    // }
-    // i++
 }
+
 /**
  * For highlighting square that is valid move
  * @param col column number - x value

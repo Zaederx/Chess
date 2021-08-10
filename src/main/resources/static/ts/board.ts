@@ -10,7 +10,7 @@ export class Board {
     colour1:'black'|'white'
     colour2:'black'|'white'
     grid:(Piece|null)[][]
-    turn:string
+    turn:'black'|'white'
     constructor(colour1:'black'|'white', colour2:'black'|'white') {
         this.colour1 = colour1
         this.colour2 = colour2

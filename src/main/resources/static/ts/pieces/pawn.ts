@@ -67,7 +67,7 @@ export class Pawn extends Piece {
 
         //combine nets 
         this.movesNet = netsForward[0]
-        this.captureNet.concat(netsForwardLeft[1],netsForwardRight[1])
+        this.captureNet = this.captureNet.concat(netsForwardLeft[1],netsForwardRight[1])
     }
 
     getMovesNet() {

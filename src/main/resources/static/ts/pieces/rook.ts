@@ -12,7 +12,7 @@ export class Rook extends Piece {
         //reset move and capture nets
         this.movesNet = []
         this.captureNet = []
-        
+
         //traverse forward & back up to 8 squares
         var nets1 = this.traverseP(8,node,Piece.top)
         var nets2 = this.traverseP(8,node,Piece.bottom)
@@ -22,7 +22,7 @@ export class Rook extends Piece {
         var nets4 = this.traverseP(8,node,Piece.right)
 
         //join nets together into moves and captuer nets
-        this.movesNet.concat(nets1[0],nets2[0],nets3[0],nets4[0])
-        this.captureNet.concat(nets1[1],nets2[1],nets3[1],nets4[1])
+        this.movesNet = this.movesNet.concat(nets1[0],nets2[0],nets3[0],nets4[0])
+        this.captureNet = this.captureNet.concat(nets1[1],nets2[1],nets3[1],nets4[1])
    }
 }
