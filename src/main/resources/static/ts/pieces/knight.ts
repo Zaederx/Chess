@@ -17,7 +17,8 @@ export class Knight extends Piece {
      * @param node 
      */
     setNets(node:BoardNode) {
-
+        this.movesNet = []
+        this.captureNet = []
        //Knight has eight postions for movement
 
         var n = node.nodes[Piece.topLeft]
