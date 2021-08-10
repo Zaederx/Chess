@@ -1,5 +1,5 @@
 import { BoardGraph } from './board-graph.js';
-import { Board } from './board.js'
+// import { Board } from './board.js'
 import { Piece } from './piece.js';
 
 //contains grid 'memory'
@@ -30,7 +30,7 @@ window.onload = () => {
  */
 function displayBoard() {
     var turnDiv = document.querySelector('#turn-div') as HTMLDivElement
-    turnDiv.innerHTML = board.turn
+    turnDiv.innerHTML = board.turn.toLocaleUpperCase()+"'s turn"
     var rowNum = 0
     var colNum = 0
     board.getGrid().forEach(row => {
@@ -137,23 +137,6 @@ function highlightSquare(col:number,row:number, colour:string) {
     }
 }
 
-// /**
-//  * For highlighting square that is valid move for 
-//  * capturing another piece.
-//  * @param col column number - x value
-//  * @param row row number - y value
-//  */
-// function highlightRed(col:number,row:number) {
-//     if (col < 8 && row < 8 && col > -1 && row > -1) {
-//         //get square id
-//         var id = '#n'+ row + '-' + col
-//         //get square
-//         var square = document.querySelector(id) as HTMLDivElement
-//         //change background colour to highlighted
-//         square.style.backgroundColor = 'rgb(200,100,100)'
-//     }
-// }
-
 //to make a square that is a valid move selectable
 /**
  * Make new available move clickable (so that 
@@ -194,15 +177,4 @@ function cellToIMG(cell:Piece|null) {
         img = '<img src="'+cell?.imgScr+'"></img>'
     }
     return img
-}
-
-/**
- * Move piece 'at' position 'to' new position
- * @param atX board current X position of piece to be moved
- * @param atY board current Y position of piece to be moved
- * @param toX board X position where piece should be moved
- * @param toY board Y position where piece should be moved
- */
-function movePiece(atX:number,atY:number,toX:number,toY:number) {
-    board.movePiece(atY,atX,toY,toX)
 }
