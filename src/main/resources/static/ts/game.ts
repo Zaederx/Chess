@@ -107,7 +107,7 @@ function displayPieceOptions(atX:number, atY:number) {
         selectSquares(move,green)
     })
     captures!.forEach(cap => {
-        var red = 'rgb(200,100,100)'
+        var red = 'rgba(200,100,100,0.6)'
         selectSquares(cap,red)
     })
 }
