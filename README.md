@@ -1,5 +1,5 @@
 # Chess
- [see v2 walkthorugh - Youtube](https://youtu.be/R3hvk7GSI5w)
+## [see version2 walkthorugh - Youtube](https://youtu.be/R3hvk7GSI5w)
 
  
  ## Tables of Contents
