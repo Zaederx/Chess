@@ -24,33 +24,5 @@ export class Bishop extends Piece{
         this.captureNet = this.captureNet.concat(nets1[1],nets2[1],nets3[1],nets4[1])
    }
 
-    //TODO - FIX Bishop moveNet
-    // getMovesNet(x:number, y:number) {
-    //     return [
-    //         //put piece back
-    //         [x,y],
-    //         //diagonal movements
-    //         //diagonals
-    //     [x+7, y+7],[x-7, y-7],
-    //     [x-7, y+7],[x+7, y-7],
-
-    //     [x+6, y+6],[x-6, y-6],
-    //     [x-6, y+6],[x+6, y-6],
-
-    //     [x+5, y+5],[x-5, y-5],
-    //     [x-5, y+5],[x+5, y-5],
-
-    //     [x+4, y+4],[x-4, y-4],
-    //     [x-4, y+4],[x+4, y-4],
-
-    //     [x+3, y+3],[x-3, y-3],
-    //     [x-3, y+3],[x+3, y-3],
-
-    //     [x+2, y+2],[x-2, y-2],
-    //     [x-2, y+2],[x+2, y-2],
-
-    //     [x+1, y+1],[x-1, y-1],
-    //     [x-1, y+1],[x+1, y-1],
-    //     ]
-    // }
+    
 }

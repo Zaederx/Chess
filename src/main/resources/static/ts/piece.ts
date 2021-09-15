@@ -1,4 +1,3 @@
-import { Board } from "./board.js"
 import { BoardNode } from "./board-node.js"
 
 export class Piece {
