@@ -33,6 +33,11 @@ export class Piece {
     }
 
 
+    /**
+     * to set the movesNet and captureNet
+     * Each class has own implementation
+     * @param node 
+     */
     setNets(node:BoardNode) {
         /* each calss will have different implementation */
     }
@@ -73,7 +78,7 @@ export class Piece {
         var n7 = this.traverseP(n, node, Piece.bottomRight)
 
         this.movesNet.concat(n0[0],n1[0],n2[0],n3[0],n4[0],n5[0],n6[0],n7[0])
-        this.captureNet.concat(n0[0],n1[0],n2[0],n3[0],n4[0],n5[0],n6[0],n7[0])
+        this.captureNet.concat(n0[1],n1[1],n2[1],n3[1],n4[1],n5[1],n6[1],n7[1])
 
     }
 
@@ -94,7 +99,7 @@ export class Piece {
      * @param node - the node this piece is on
      * @param p - which node position to traverse (can be number 0 to 7)
      */
-     traverseP(n:number, node:BoardNode, p:number) {
+     traverseP(n:number, node:BoardNode, p:number):number[][][] {
         var nets:number[][][] = []
         var movesNet:number[][] = [] 
         var captureNet:number[][]= []

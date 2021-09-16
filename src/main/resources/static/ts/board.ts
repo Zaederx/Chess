@@ -43,7 +43,7 @@ export class Board {
 
     getPieceMoves(x:number, y:number) {
         var piece = this.grid[y][x]
-        return piece?.getMovesNet(x,y)
+        return piece?.getMovesNet()
     }
 
     getGrid() {
